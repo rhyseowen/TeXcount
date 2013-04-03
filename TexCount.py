@@ -1,5 +1,5 @@
 import sublime, sublime_plugin
-from subprocess import PIPE
+from subprocess import PIPE, Popen
 
 class TexcountCommand(sublime_plugin.TextCommand):
 	def run(self, edit):
@@ -15,7 +15,7 @@ class TexcountCommand(sublime_plugin.TextCommand):
 		# MacTex fix
 		cmd = "PATH=$PATH:/usr/texbin; " + cmd
 
-		p = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
+		p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
 		out, err = p.communicate()
 
 		if (self.view.is_dirty()):
