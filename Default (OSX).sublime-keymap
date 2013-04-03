@@ -1,0 +1,11 @@
+/*
+TexCount Package keymap for OS X
+*/
+[
+
+	// Shortcut designed to fit with LaTeXTools Package
+
+	// Key shortcut is
+	{ 	"keys": ["super+l","w"],
+		"command": "texcount"}
+]

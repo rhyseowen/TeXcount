@@ -1,0 +1,12 @@
+/*
+TexCount Package keymap for Linux
+*/
+[
+
+	// Shortcut designed to fit with LaTeXTools Package
+
+	// Key shortcut is
+	{ 	"keys": ["ctrl+l","w"],
+		"command": "texcount"}
+]
+
