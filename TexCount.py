@@ -15,6 +15,11 @@ class TexcountCommand(sublime_plugin.TextCommand):
 		# MacTex fix
 		cmd = "PATH=$PATH:/usr/texbin; " + cmd
 
+		testcmdprocess = Popen("PATH=$PATH:/usr/texbin; which texcount", shell=True, stdout=PIPE, stderr=PIPE)
+		testout, testerr = testcmdprocess.communicate()
+		if (out == ""):
+			sublime.error_message("TeXcount not installed in PATH \nDownload from: http://app.uio.no/ifi/texcount/")
+
 		p = Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
 		out, err = p.communicate()
 
