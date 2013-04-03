@@ -9,7 +9,13 @@ class TexcountCommand(sublime_plugin.TextCommand):
 			sublime.error_message("No file selected")
 			return
 
-		p = subprocess.Popen(["/usr/texbin/texcount", filename] , stdout=PIPE, stderr=PIPE)
+		filename = filename.replace(" ","\ ")
+		cmd = "texcount " + filename
+
+		# MacTex fix
+		cmd = "PATH=$PATH:/usr/texbin; " + cmd
+
+		p = subprocess.Popen(cmd, shell=True, stdout=PIPE, stderr=PIPE)
 		out, err = p.communicate()
 
 		if (self.view.is_dirty()):
