@@ -17,7 +17,7 @@ class TexcountCommand(sublime_plugin.TextCommand):
 
 		testcmdprocess = Popen("PATH=$PATH:/usr/texbin; which texcount", shell=True, stdout=PIPE, stderr=PIPE)
 		testout, testerr = testcmdprocess.communicate()
-		if (out == ""):
+		if (testout == ""):
 			sublime.error_message("TeXcount not installed in PATH \nDownload from: http://app.uio.no/ifi/texcount/")
 			return
 
